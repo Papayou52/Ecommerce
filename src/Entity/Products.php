@@ -40,6 +40,7 @@ class Products
 
     public function __construct()
     {
+        $this->created_at = new \DateTimeImmutable();
         $this->images = new ArrayCollection();
     }
 
