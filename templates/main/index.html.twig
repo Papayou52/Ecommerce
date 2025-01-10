@@ -4,6 +4,30 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Hello World</h1>
-	<p>Accueil</p>
+	<main class='container'>
+		<section class='row'>
+			<div class='col-12'>
+				<h1>Site E-commerce</h1>
+				<p>Bienvenue</p>
+			</div>
+			{% for category in categories %}
+				{% if category.parent == null %}
+					<div class="col-12 mb-3">
+						<h2>{{ category.name }}</h2>
+					</div>
+				{% else %}
+					<div class="col-3 mb-3">
+						<div class="card" style="h-100;">
+							<div class="card-body">
+								<h3 class="card-title">{{ category.name}}</h3>
+								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								<a href="{{ path('categories_list', {name: category.name}) }}" class="btn btn-primary">Go somewhere</a>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</section>
+	</main>
+
 {% endblock %}
